@@ -1,0 +1,18 @@
+services:
+  php:
+    image: php:8.1-cli
+    container_name: php
+    working_dir: /app
+    volumes:
+      - "./:/app"
+  #  depends_on:
+     # composer:
+     #     condition: service_completed_successfully
+  #  command: "/app/bin/console holaluz:trial:run 2016-readings.csv"
+  composer:
+    image: composer:latest
+    volumes:
+      - "./:/app"
+    container_name: composer
+    working_dir: /app
+    command: "composer install --no-interaction"

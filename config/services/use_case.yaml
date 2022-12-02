@@ -1,0 +1,12 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  # commandbus autowire
+  Holaluz\Trial\:
+    resource: '../../src/**/UseCase/*Handler.php'
+    exclude: '../../src/**/UseCase/*{Query,Command}.php'
+    tags:
+      - { name: tactician.handler, typehints: true }
